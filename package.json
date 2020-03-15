@@ -1,0 +1,26 @@
+{
+  "name": "challange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node-dev index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mongodb-memory-server": "^6.3.3",
+    "node-dev": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "axios-retry": "^3.1.2",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.15",
+    "microjob": "^0.7.0",
+    "mongoose": "^5.9.4"
+  }
+}

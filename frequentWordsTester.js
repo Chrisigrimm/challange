@@ -18,37 +18,34 @@ try {
 
 if (loremWords) {
     const wordArray = loremWords.split(' ');
-    const { mostFrequentWords,
+    const { 
+        mostFrequentWordsQuickSort,
+        mostFrequentWords,
+        mostFrequentWordsReduce,
         mostFrequentWordsOld,
         mostFrequentWordsObject
     } = require('./app/lib/helperFunctions');
-    let output;
+
+    const testFunction = (sortFunc) => {
+        let output;
+        for (let i = 1; i <= 50; i++) {
+            output = sortFunc(wordArray, 10);
+        }
+        return output;
+    }
+
+    console.log('####MAP_QUICKSORT#####');
+    console.time('TOTAL');
+    console.log(testFunction(mostFrequentWordsQuickSort));
+    console.timeEnd('TOTAL');
+
+    console.log('####MAP_REDUCE#####');
+    console.time('TOTAL');
+    console.log(testFunction(mostFrequentWordsReduce))
+    console.timeEnd('TOTAL');
 
     console.log('####MAP#####');
-
-    for (let i = 0; i < 10; i++) {
-        console.time('TOTAL');
-        output = mostFrequentWords(wordArray, 10);
-        console.timeEnd('TOTAL');
-    }
-
-    console.log(output);
-    console.log('####OBJECT#####');
-
-    for (let i = 0; i < 10; i++) {
-        console.time('TOTAL');
-        output = mostFrequentWordsObject(wordArray, 10);
-        console.timeEnd('TOTAL');
-    }
-
-    console.log(output);
-    console.log('####OLD#####');
-
-    for (let i = 0; i < 10; i++) {
-        console.time('TOTAL');
-        output = mostFrequentWordsOld(wordArray, 10);
-        console.timeEnd('TOTAL');
-    }
-
-    console.log(output);
+    console.time('TOTAL');
+    console.log(testFunction(mostFrequentWords))
+    console.timeEnd('TOTAL');
 }

@@ -61,7 +61,7 @@ module.exports = async (crawlerThrotteling) => {
 
                                 const { mostFrequentWords } = require('./app/lib/helperFunctions')
 
-                                const topTenWords = mostFrequentWords(wordArray, 10).map((mostWords) => mostWords.word);
+                                const topTenWords = mostFrequentWords(wordArray, 10).map((mostWords) => mostWords[0]);
 
                                 let car = await carModel.findOne({ name });
 

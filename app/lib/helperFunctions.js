@@ -2,7 +2,9 @@ module.exports = {
     mostFrequentWords: (wordsArray, ammount) => {
         let wordOccurrences = {};
         for (var i = 0; i < wordsArray.length; i++) {
-            wordOccurrences['_' + wordsArray[i]] = (wordOccurrences['_' + wordsArray[i]] || 0) + 1;
+            if (wordsArray[i] !== '') {
+                wordOccurrences['_' + wordsArray[i]] = (wordOccurrences['_' + wordsArray[i]] || 0) + 1;
+            }
         }
         let result = Object.keys(wordOccurrences).reduce(function (acc, currentKey) {
             for (var i = 0; i < ammount; i++) {
@@ -18,6 +20,7 @@ module.exports = {
             }
             return acc;
         }, []);
+
         return result;
     }
 }

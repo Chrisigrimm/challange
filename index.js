@@ -4,7 +4,8 @@ const main = async () => {
     await require('./app/database').init();
     await require('./app/api')();
 
-    require('./app/crawler/car.crawler')();
+    const carCrawler = require('./app/crawler/car.crawler');
+    carCrawler(1000);
 }
 
 main();

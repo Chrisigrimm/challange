@@ -1,5 +1,5 @@
 module.exports = {
-    mostFrequentWords: (wordsArray, ammount) => {
+    mostFrequentWordsOld: (wordsArray, ammount) => {
         let wordOccurrences = {};
         for (var i = 0; i < wordsArray.length; i++) {
             if (wordsArray[i] !== '') {
@@ -22,5 +22,31 @@ module.exports = {
         }, []);
 
         return result;
+    },
+    mostFrequentWordsObject: (wordsArray, amount) => {
+        let wordOccurrences = {};
+        for (var i = 0; i < wordsArray.length; i++) {
+            if (wordsArray[i] !== '') {
+                wordOccurrences['_' + wordsArray[i]] = (wordOccurrences['_' + wordsArray[i]] || 0) + 1;
+            }
+        }
+
+        return Object.entries(wordOccurrences)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, amount);
+    },
+    mostFrequentWords: (wordsArray, amount) => {
+        let wordOccurrences = new Map();
+        const wordsArrayLength = wordsArray.length;
+
+        for (var i = 0; i < wordsArrayLength; i++) {
+            if (wordsArray[i] !== '') {
+                wordOccurrences.set(wordsArray[i], (wordOccurrences.get(wordsArray[i]) || 0) + 1);
+            }
+        }
+
+        return Array.from(wordOccurrences)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, amount);
     }
 }
